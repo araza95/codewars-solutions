@@ -11,5 +11,18 @@ Input: 123456789 Output: 987654321
 */
 
 function descendingOrder(n: number): number {
-  return n;
+  const numberArray = n.toString().split("");
+
+  for (let index = 0; index < numberArray.length; index++) {
+    if (numberArray[index] < numberArray[index + 1]) {
+      const temp = numberArray[index];
+      numberArray[index] = numberArray[index + 1];
+      numberArray[index + 1] = temp;
+
+      index = -1;
+    }
+  }
+  return parseInt(numberArray.join(""), 10);
 }
+
+console.log(descendingOrder(42145));
